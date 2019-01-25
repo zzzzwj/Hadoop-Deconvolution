@@ -1,3 +1,5 @@
+import org.apache.hadoop.io.IntWritable;
+
 import java.util.ArrayList;
 
 class Record{
@@ -33,11 +35,11 @@ public class Utils {
     }
 
     public static int[] subgraph(int[] src, int x, int y, int startx, int starty, int subx, int suby){
-        System.out.println("x:" + x + "\ty:" + y + "\tstartx:" + startx + "\tstarty:" + starty + "\tsubx:" + subx + "\tsuby:" + suby);
+//        System.out.println("x:" + x + "\ty:" + y + "\tstartx:" + startx + "\tstarty:" + starty + "\tsubx:" + subx + "\tsuby:" + suby);
         int[] res = new int[subx * suby];
         for (int j = starty; j < starty + suby; j++){
             for(int i = startx; i < startx + subx; i++){
-                System.out.println(i + " " + j);
+//                System.out.println(i + " " + j);
                 res[(j - starty) * subx + (i - startx)] = src[j * x + i];
             }
         }
@@ -45,25 +47,31 @@ public class Utils {
     }
 
     private static int getSubgraphstart(int idx, int x, int factor, int padding) {
-        if(factor == 1){
+        if(factor == 1)
             return 0;
-        }
-        if(idx == 0){
+        if(idx == 0)
             return 0;
-        } else {
+        else
             return idx * x / factor - padding;
-        }
+    }
+
+    public static int[] getCutgraphrange(int idx, int x, int factor, int padding) {
+        if(idx == 0)
+            return new int[]{0, x - padding};
+        else if(idx == factor - 1)
+            return new int[]{padding, x};
+        else
+            return new int[]{padding, x - padding};
     }
 
     private static int getSubgraphlen(int idx, int x, int factor, int padding) {
-        if(factor == 1){
+        if(factor == 1)
             return x;
-        }
-        if(idx == 0 || idx == factor - 1){
+
+        if(idx == 0 || idx == factor - 1)
             return x / factor + padding;
-        } else {
+        else
             return x / factor + 2 * padding;
-        }
     }
 
     public static ArrayList<Record> all_subgraph(int[] src, int x, int y, int factor, int padding){
@@ -76,7 +84,7 @@ public class Utils {
                 int starty = getSubgraphstart(j, y, factor, padding);
                 Record r = new Record();
                 r.value = subgraph(src, x, y, startx, starty, subx, suby);
-                r.descriptor = startx + " " + subx + " " + starty + " " + suby + " " + padding;
+                r.descriptor = i + " " + subx + " " + j + " " + suby + " " + padding;
                 list.add(r);
             }
         }
@@ -89,5 +97,30 @@ public class Utils {
             res[i] = bytes2int(value, i * len, len * 8);
         }
         return res;
+    }
+
+    public static byte[] ints2bytes(int[] value, int len){
+        byte[] res = new byte[value.length * len];
+        for(int i = 0; i < value.length; i++){
+            byte[] tmp = int2bytes(value[i], len * 8);
+            System.arraycopy(tmp, 0, res, i * len, tmp.length);
+        }
+        return res;
+    }
+
+    public static int[] listappend(int[] src1, int[] src2){
+        int[] res = new int[src1.length + src2.length];
+        for(int i = 0; i < src1.length; i++){
+            res[i] = src1[i];
+        }
+        for(int i = 0; i < src2.length; i++){
+            res[i + src1.length] = src2[i];
+        }
+        return res;
+    }
+
+    public static String getFilename(String[] keywords){
+        String filename = keywords[1] + "-" + keywords[3] + "-" + keywords[5];
+        return filename;
     }
 }
