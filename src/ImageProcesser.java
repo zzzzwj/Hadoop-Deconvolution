@@ -25,7 +25,7 @@ public class ImageProcesser {
 //            System.out.println(Arrays.toString(data));
             // 默认16位uint
             int[] shape = new int[]{Integer.valueOf(keywords[1]), Integer.valueOf(keywords[2])};
-            ArrayList<Record> res = Utils.all_subgraph(data, shape[1], shape[0], 2, 0);
+            ArrayList<Record> res = Utils.all_subgraph(data, shape[1], shape[0], 2, 2);
             int slice = Integer.valueOf(keywords[0]);
             for(Record r : res){
                 int[] newvalue = Utils.listappend(new int[]{slice}, r.value);
@@ -48,7 +48,7 @@ public class ImageProcesser {
             for(int k : map.keySet()){
                 data = Utils.listappend(data, map.get(k));
             }
-//            System.out.println(Arrays.toString(data));
+//            System.out.println("data:"+Arrays.toString(data));
 
             // Richardson Lucy Algorithm here
 

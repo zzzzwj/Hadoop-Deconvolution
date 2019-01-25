@@ -74,6 +74,7 @@ public class ImageCombiner {
 //                    System.out.println("subx:"+subx+" suby:"+suby);
 //                    System.out.println("data:"+Arrays.toString(data));
                     int[] subgraph = Utils.subgraph(data, subx, suby, subidx[0], 0, subidx[1] - subidx[0], suby);
+                    subx = subidx[1] - subidx[0];
                     dim_x.add(subgraph);
                     len_x += subx;
                 }
@@ -88,6 +89,8 @@ public class ImageCombiner {
                 }
                 int[] subidx = Utils.getCutgraphrange(j, suby, factor, padding);
                 int[] subgraph = Utils.subgraph(buffer, len_x, suby, 0, subidx[0], len_x, subidx[1] - subidx[0]);
+//                System.out.println("graph:"+Arrays.toString(subgraph));
+                suby =  subidx[1] - subidx[0];
                 dim_y.add(subgraph);
                 len_y += suby;
             }
@@ -97,7 +100,7 @@ public class ImageCombiner {
                 System.arraycopy(data, 0, res, len, data.length);
                 len += data.length;
             }
-//            System.out.println(Arrays.toString(res));
+            System.out.println(Arrays.toString(res));
 
             context.write(new Text(key.toString() + " " + len_x + " " + len_y), new BytesWritable(Utils.ints2bytes(res, 2)));
         }
