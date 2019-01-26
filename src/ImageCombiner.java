@@ -100,7 +100,7 @@ public class ImageCombiner {
                 System.arraycopy(data, 0, res, len, data.length);
                 len += data.length;
             }
-            System.out.println(Arrays.toString(res));
+//            System.out.println(Arrays.toString(res));
 
             context.write(new Text(key.toString() + " " + len_x + " " + len_y), new BytesWritable(Utils.ints2bytes(res, 2)));
         }

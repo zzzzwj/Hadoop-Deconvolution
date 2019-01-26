@@ -25,9 +25,11 @@ public class ImageProcesser {
 //            System.out.println(Arrays.toString(data));
             // 默认16位uint
             int[] shape = new int[]{Integer.valueOf(keywords[1]), Integer.valueOf(keywords[2])};
+            // 最后一位参数需要根据PSF进行设置，一般为PSF的边长 / factor， 输出带padding的子图
             ArrayList<Record> res = Utils.all_subgraph(data, shape[1], shape[0], 2, 2);
             int slice = Integer.valueOf(keywords[0]);
             for(Record r : res){
+                // 以子图在原图中的位置为key，将子图写入输出
                 int[] newvalue = Utils.listappend(new int[]{slice}, r.value);
                 context.write(new Text(r.descriptor), new BytesWritable(Utils.ints2bytes(newvalue, 4)));
             }
@@ -45,16 +47,17 @@ public class ImageProcesser {
                 int[] array = Utils.bytes2ints(value.copyBytes(), 4);
                 map.put(array[0], Arrays.copyOfRange(array, 1, array.length));
             }
+            // 根据slice顺序将子图按z轴拼接，获得三维图像数据
             for(int k : map.keySet()){
                 data = Utils.listappend(data, map.get(k));
             }
 //            System.out.println("data:"+Arrays.toString(data));
-
             // Richardson Lucy Algorithm here
 
 
 
 
+            // 获得int类型的处理数据，以16位无符号整形写入文件
             key = new Text(map.keySet().size() + " " + key.toString());
             // must be 2 bytes, or you should change the param in RecordWriter either.
             context.write(key, new BytesWritable(Utils.ints2bytes(data, 2)));
