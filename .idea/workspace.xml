@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78414e12-2bee-443d-83ae-82c9becaa3b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/.0-0-1.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/.0-1-1.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/.1-0-1.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/.1-1-1.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/0-0-1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/0-1-1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/1-0-1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/1-1-1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/.0.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/.1.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/.2.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/0.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/2.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result2/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageCombiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageCombiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageProcesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcesser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/.0-0-2.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/.0-1-2.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/.1-0-2.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/.1-1-2.bin.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/0-0-2.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/0-1-2.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/1-0-2.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/1-1-2.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_res/_SUCCESS" beforeDir="false" />
-    </list>
+    <list default="true" id="78414e12-2bee-443d-83ae-82c9becaa3b5" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +26,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-418">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,7 +103,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548482524453" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548482526126" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/common/lib" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -214,12 +181,12 @@
       <workItem from="1548400125501" duration="9885000" />
       <workItem from="1548421149126" duration="5505000" />
       <workItem from="1548426826669" duration="917000" />
-      <workItem from="1548479629688" duration="2776000" />
+      <workItem from="1548479629688" duration="3497000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55292000" />
+    <option name="totallyTimeSpent" value="56013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -234,7 +201,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.29310346" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -397,7 +364,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-418">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
