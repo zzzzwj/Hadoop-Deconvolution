@@ -32,6 +32,9 @@ public class ImageCombiner {
 
             IntWritable newkey = new IntWritable(slice);
             byte[] flags = Utils.ints2bytes(new int[]{idx, idy, subx, suby, padding}, 2);
+//            System.out.println("flags:" + Arrays.toString(Utils.bytes2ints(flags, 2)));
+//            System.out.println("flags:" + Utils.printHexBinary(flags));
+//            System.out.println(idx + " " + idy + " " + subx + " " + suby + " " + padding);
             byte[] data = value.copyBytes();
             byte[] newvalue = new byte[flags.length + data.length];
             System.arraycopy(flags, 0, newvalue, 0, flags.length);
@@ -48,6 +51,7 @@ public class ImageCombiner {
             for(BytesWritable value : values){
                 byte[] data = value.copyBytes();
                 int[] flags = Utils.bytes2ints(Arrays.copyOfRange(data, 0, 4), 2);
+//                System.out.println(Arrays.toString(Utils.bytes2ints(Arrays.copyOfRange(data, 0, 10), 2)));
                 ArrayList<Integer> k = new ArrayList<>();
                 for(int flag : flags)
                     k.add(flag);
@@ -65,6 +69,7 @@ public class ImageCombiner {
                 int suby = 0;
                 for(int i = 0; i < factor; i++){
                     int[] buffer = map.get(new ArrayList<>(Arrays.asList(i, j)));
+//                    System.out.println(Arrays.toString(Arrays.copyOfRange(buffer, 0, 3)));
                     int[] flag = Arrays.copyOfRange(buffer, 0, 3);
                     int[] data = Arrays.copyOfRange(buffer, 3, buffer.length);
                     int subx = flag[0];

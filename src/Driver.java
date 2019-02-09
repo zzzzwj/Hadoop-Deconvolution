@@ -2,6 +2,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Driver {
@@ -44,14 +45,14 @@ public class Driver {
     }
 
     public static void main(String[] args) throws Exception{
-        if(args.length != 2){
-            System.out.println("Usage: hadoop jar *.jar input output");
+        if(args.length != 3){
+            System.out.println("Usage: hadoop jar *.jar img psf output");
             System.exit(-1);
         }
 
         String tmpdir1 = "tmp_res";
         String tmpdir2 = "tmp_res2";
-        String[] ImageProcess_param = {args[0], tmpdir1};
+        String[] ImageProcess_param = {args[0], args[1], tmpdir1};
         String[] ImageCombiner_param = {tmpdir1, tmpdir2};
 
         ImageProcesser.main(ImageProcess_param);
@@ -61,7 +62,7 @@ public class Driver {
         FileSystem fs = FileSystem.get(conf);
 
         HashMap<Integer, String> map = getFileList(fs, tmpdir2);
-        CombineSubImg(fs, map, args[1]);
+        CombineSubImg(fs, map, args[2]);
 
         // 注释以保留中间结果， 主要用于调试
         fs.delete(new Path(ImageProcess_param[1]),true);

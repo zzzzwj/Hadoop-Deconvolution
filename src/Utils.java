@@ -1,5 +1,6 @@
 import org.apache.hadoop.io.IntWritable;
 
+import java.io.*;
 import java.util.ArrayList;
 
 class Record{
@@ -8,6 +9,18 @@ class Record{
 }
 
 public class Utils {
+    private static final char[] hexCode = "0123456789ABCDEF".toCharArray();
+
+    public static String printHexBinary(byte[] val){
+        StringBuilder sb = new StringBuilder(val.length * 2);
+        for(byte b : val){
+            sb.append(hexCode[(b >> 4) & 0xF]);
+            sb.append(hexCode[b & 0xF]);
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
+
     public static int bytes2int(byte[] value, int offset){
         return bytes2int(value, offset, 32);
     }
@@ -15,8 +28,8 @@ public class Utils {
     public static int bytes2int(byte[] value, int offset, int bits){
         int res=0;
         switch(bits){
-            case 8:res = res | (value[offset]); break;
-            case 16:res = res | ((value[offset] << 8) & 0xFF) | (value[offset+1] & 0xFF); break;
+            case 8:res = (value[offset]); break;
+            case 16:res = ((value[offset] & 0xFF) << 8) | (value[offset+1] & 0xFF); break;
             case 32:res = ((value[offset] & 0xFF) << 24) | ((value[offset+1] & 0xFF) << 16) | ((value[offset+2] & 0xFF) << 8) | (value[offset+3] & 0xFF); break;
             default:res = 0; break;
         }
@@ -30,6 +43,22 @@ public class Utils {
             case 16:res = new byte[]{(byte)((value >> 8) & 0xFF), (byte)value}; break;
             case 32:res = new byte[]{(byte)((value >> 24) & 0xFF), (byte)((value >> 16) & 0xFF), (byte)((value >> 8) & 0xFF), (byte)value}; break;
             default:res = new byte[]{0}; break;
+        }
+        return res;
+    }
+
+    public static double[] ints2doubles(int[] value){
+        double[] res = new double[value.length];
+        for(int i = 0; i < res.length; i++){
+            res[i] = value[i];
+        }
+        return res;
+    }
+
+    public static int[] doubles2ints(double[] value){
+        int[] res = new int[value.length];
+        for(int i = 0; i < res.length; i++){
+            res[i] = (int)value[i];
         }
         return res;
     }
@@ -122,5 +151,22 @@ public class Utils {
     public static String getFilename(String[] keywords){
         String filename = keywords[1] + "-" + keywords[3] + "-" + keywords[5];
         return filename;
+    }
+
+    public static int[] getPSF(InputStream in, int[] shape) throws IOException {
+        byte[] head = new byte[16];
+        in.read(head, 0, head.length);
+        shape[0] = bytes2int(head, 0, 32);
+        shape[1] = bytes2int(head, 4, 32);
+        shape[2] = bytes2int(head, 8, 32);
+        int bits = bytes2int(head, 12, 32);
+
+        byte[] byte_buffer = new byte[shape[0] * shape[1] * shape[2] * bits / 8];
+        in.read(byte_buffer, 0, byte_buffer.length);
+        int[] int_buffer = bytes2ints(byte_buffer, bits / 8);
+
+        in.close();
+
+        return int_buffer;
     }
 }

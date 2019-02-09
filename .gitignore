@@ -4,6 +4,12 @@
 # Log file
 *.log
 
+# Output
+out/
+img.bin
+img.bin.swp
+img.bin.crc
+
 # BlueJ files
 *.ctxt
 
